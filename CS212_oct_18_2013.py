@@ -2,7 +2,7 @@ def kind(n, ranks):
     """Return the first rank that this hand has exactly n of.
     Return None if there is no n-of-a-kind in the
     """
-    return next(r for r in ranks if ranks.count(r) == n)
+    return next((r for r in ranks if ranks.count(r) == n), False)
 
 def test():
     "Test cases for the functions in poker program."
