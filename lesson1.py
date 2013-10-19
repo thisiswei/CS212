@@ -12,7 +12,7 @@ def allmax(iterable, key=None):
     to_return = []
     key = key or (lambda x: x)
     max_ = max(iterable, key=key)
-    [result.append(i) for i in iterable if key(i) == max_]
+    [to_return.append(i) for i in iterable if key(i) == key(max_)]
     return to_return
 
 def hand_rank(hand):
@@ -40,7 +40,7 @@ def flush(hand):
     return len(set([s for r, s in hand])) == 1
 
 def stright(ranks):
-    return max(ranks) - min(ranks) == 4 and len(set([ranks]) == 5
+    return max(ranks) - min(ranks) == 4 and len(set(ranks)) == 5
 
 def kind(n, ranks):
     """Return the first rank that this hand has exactly n of.
@@ -65,8 +65,13 @@ def test():
     assert kind(1, fkranks) == 7
     print 'tests pass'
 
+def test_allmax():
+    hands = [['6C', '7C', '8C', '9C', 'TC'], ['6D', '7D', '8D', '9D', 'TD'], ['9D', '9H', '9S', '9C', '7D'], ['TD', 'TC', 'TH', '7C', '7D']]
+    assert allmax(hands, hand_rank) == hands[:2]
+
 def main():
     test()
+    test_allmax()
 
 if __name__ == '__main__':
     exit(main())
