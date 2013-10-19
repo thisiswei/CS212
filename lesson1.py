@@ -24,9 +24,8 @@ def hand_rank(hand):
             (4, max(ranks)) if stright(ranks) else
             (3, kind(3, ranks), ranks) if kind(3, ranks) else
             (2, two_pair(2, ranks), ranks) if two_pair else
-            (1, kind(2, ranks), ranks) if kind(2, pair) else
+            (1, kind(2, ranks), ranks) if kind(2, ranks) else
             (0, ranks))
-
 
 # Define a function, two_pair(ranks).
 def two_pair(ranks):
