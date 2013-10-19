@@ -23,3 +23,8 @@ def card_ranks(hand):
     ranks.sort(reverse = True)
     return ranks
 
+def main():
+    test()
+
+if __name__ == '__main__':
+    exit(main())
