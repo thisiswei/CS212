@@ -15,6 +15,11 @@ def allmax(iterable, key=None):
     [to_return.append(i) for i in iterable if key(i) == max_val]
     return to_return
 
+def weird_all_max_from_forum(iterable, key=None):
+    max_val = map(key , max(iterable, key=key))
+    return [item for val, item in zip(map(key, iterable), iterable)
+            if val == max_val]
+
 def hand_rank(hand):
     ranks = card_ranks(hand)
     return ((8, max(ranks)) if stright(ranks) and flush(hand) else
