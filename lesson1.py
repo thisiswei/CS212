@@ -11,8 +11,8 @@ mydeck = [r+s for r in '23456789TJQKA' for s in 'SHDC']
 
 def deal(numhands, n=5, deck=mydeck):
     # Your code here.
-
-
+    random.shuffle(deck)
+    return [deck[i*n:(i+1)*5] for i in range(numhands)]
 
 # Write a function, allmax(iterable, key=None), that returns
 # a list of all items equal to the max of the iterable,
