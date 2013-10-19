@@ -4,13 +4,15 @@ def two_pair(ranks):
     """If there are two pair, return the two ranks as a
     tuple: (highest, lowest); otherwise return None."""
     # Your code here.
-
+    high, low = kind(2, ranks), kind(2, ranks[::-1])
+    return (high, low) if high != low else None
 
 
 def kind(n, ranks):
     """Return the first rank that this hand has exactly n of.
     Return None if there is no n-of-a-kind in the
     """
+    #Your code here
     return next((r for r in ranks if ranks.count(r) == n), None)
 
 def test():
