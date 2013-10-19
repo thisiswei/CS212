@@ -1,3 +1,12 @@
+# Define a function, two_pair(ranks).
+
+def two_pair(ranks):
+    """If there are two pair, return the two ranks as a
+    tuple: (highest, lowest); otherwise return None."""
+    # Your code here.
+
+
+
 def kind(n, ranks):
     """Return the first rank that this hand has exactly n of.
     Return None if there is no n-of-a-kind in the
