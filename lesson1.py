@@ -1,5 +1,17 @@
-# Define a function, two_pair(ranks).
+# Write a function, allmax(iterable, key=None), that returns
+# a list of all items equal to the max of the iterable,
+# according to the function specified by key.
 
+def poker(hands):
+    "Return a list of winning hands: poker([hand,...]) => [hand,...]"
+    return allmax(hands, key=hand_rank)
+
+def allmax(iterable, key=None):
+    "Return a list of all items equal to the max of the iterable."
+    # Your code here.
+
+
+# Define a function, two_pair(ranks).
 def two_pair(ranks):
     """If there are two pair, return the two ranks as a
     tuple: (highest, lowest); otherwise return None."""
