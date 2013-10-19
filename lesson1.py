@@ -11,8 +11,8 @@ def allmax(iterable, key=None):
     # Your code here.
     to_return = []
     key = key or (lambda x: x)
-    max_ = max(iterable, key=key)
-    [to_return.append(i) for i in iterable if key(i) == key(max_)]
+    max_val = key(max(iterable, key=key))
+    [to_return.append(i) for i in iterable if key(i) == key(max_val)]
     return to_return
 
 def hand_rank(hand):
