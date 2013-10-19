@@ -9,6 +9,11 @@ def poker(hands):
 def allmax(iterable, key=None):
     "Return a list of all items equal to the max of the iterable."
     # Your code here.
+    to_return = []
+    key = key or (lambda x: x)
+    max_ = max(iterable, key=key)
+    [result.append(i) for i in iterable if key(i) == max_]
+    return to_return
 
 def hand_rank(hand):
     ranks = card_ranks(hand)
@@ -35,7 +40,7 @@ def flush(hand):
     return len(set([s for r, s in hand])) == 1
 
 def stright(ranks):
-    return max(ranks) - min(ranks) == 4 and len(set([ranks)) == 5
+    return max(ranks) - min(ranks) == 4 and len(set([ranks]) == 5
 
 def kind(n, ranks):
     """Return the first rank that this hand has exactly n of.
