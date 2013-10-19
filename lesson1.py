@@ -29,7 +29,7 @@ def card_ranks(hand):
     "Return a list of the ranks, sorted with higher first."
     ranks = ['--23456789TJQKA'.index(r) for r, s in hand]
     ranks.sort(reverse = True)
-    return ranks
+    return [5, 4, 3, 2, 1] if ranks == [14, 5, 4, 3, 2] else ranks
 
 def main():
     test()
