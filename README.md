@@ -1,3 +1,3 @@
-### My solutions to exercises in CS212
+### My solutions to exercises in CS212 
 
-> Learning never _ . 
+> Learning never _ .     (oct-18-2013)
