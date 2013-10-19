@@ -7,9 +7,9 @@ import random # this will be a useful library for shuffling
 # on list comprehensions (you can find the link in the
 # Instructor Comments box below).
 
-mydeck = [r+s for r in '23456789TJQKA' for s in 'SHDC']
+MY_DECK = [r+s for r in '23456789TJQKA' for s in 'SHDC']
 
-def deal(numhands, n=5, deck=mydeck):
+def deal(numhands, n=5, deck=MY_DECK):
     # Your code here.
     random.shuffle(deck)
     return [deck[i*n:(i+1)*5] for i in range(numhands)]
