@@ -10,6 +10,18 @@ def allmax(iterable, key=None):
     "Return a list of all items equal to the max of the iterable."
     # Your code here.
 
+def hand_rank(hand):
+    ranks = card_ranks(hand)
+    return ((8, max(ranks)) if stright(ranks) and flush(hand) else
+            (7, kind(4, ranks), kind(1, ranks)) if kind(4, ranks) else
+            (6, kind(3, ranks), kind(2, ranks)) if kind(3, ranks) and kind(2, ranks) else
+            (5, ranks) if flush(hand) else
+            (4, max(ranks)) if stright(ranks) else
+            (3, kind(3, ranks), ranks) if kind(3, ranks) else
+            (2, two_pair(2, ranks), ranks) if two_pair else
+            (1, kind(2, ranks), ranks) if kind(2, pair) else
+            (0, ranks))
+
 
 # Define a function, two_pair(ranks).
 def two_pair(ranks):
@@ -19,6 +31,11 @@ def two_pair(ranks):
     high, low = kind(2, ranks), kind(2, ranks[::-1])
     return (high, low) if high != low else None
 
+def flush(hand):
+    return len(set([s for r, s in hand])) == 1
+
+def stright(ranks):
+    return max(ranks) - min(ranks) == 4 and len(set([ranks)) == 5
 
 def kind(n, ranks):
     """Return the first rank that this hand has exactly n of.
@@ -26,6 +43,12 @@ def kind(n, ranks):
     """
     #Your code here
     return next((r for r in ranks if ranks.count(r) == n), None)
+
+def card_ranks(hand):
+    "Return a list of the ranks, sorted with higher first."
+    ranks = ['--23456789TJQKA'.index(r) for r, s in hand]
+    ranks.sort(reverse = True)
+    return [5, 4, 3, 2, 1] if ranks == [14, 5, 4, 3, 2] else ranks
 
 def test():
     "Test cases for the functions in poker program."
@@ -36,12 +59,6 @@ def test():
     assert kind(2, fkranks) == None
     assert kind(1, fkranks) == 7
     print 'tests pass'
-
-def card_ranks(hand):
-    "Return a list of the ranks, sorted with higher first."
-    ranks = ['--23456789TJQKA'.index(r) for r, s in hand]
-    ranks.sort(reverse = True)
-    return [5, 4, 3, 2, 1] if ranks == [14, 5, 4, 3, 2] else ranks
 
 def main():
     test()
