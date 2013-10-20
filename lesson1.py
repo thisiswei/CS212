@@ -66,7 +66,7 @@ def better_hand_rank(hand):
 
 def groupit(ranks):
     ranks = sorted(set(ranks), reverse=True)
-    return (ranks.count(r) for r in ranks), ranks
+    return [(ranks.count(r), r) for r in ranks]
 
 # Define a function, two_pair(ranks).
 def two_pair(ranks):
