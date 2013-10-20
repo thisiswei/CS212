@@ -48,6 +48,26 @@ def hand_rank(hand):
             (1, kind(2, ranks), ranks) if kind(2, ranks) else
             (0, ranks))
 
+def better_hand_rank(hand):
+    group = groupit([r for r, s in hand])
+    counts, ranks = zip(*group)
+    if ranks == [14, 5, 4, 3, 2]:
+        ranks = [5, 4, 3, 2, 1]
+    is_straight = stright(ranks)
+    is_flush = flush(hand)
+    return ((8 if is_straight and is_flush else
+             7 if counts == (4, 1) else
+             6 if counts == (3, 2) else
+             5 if is_straight else
+             4 if is_flush else
+             3 if counts == (2, 2) else
+             2 if counts == (2, 1, 1, 1) else
+             0), ranks)
+
+def groupit(ranks):
+    ranks = sorted(set(ranks), reverse=True)
+    return (ranks.count(r) for r in ranks), ranks
+
 # Define a function, two_pair(ranks).
 def two_pair(ranks):
     """If there are two pair, return the two ranks as a
